@@ -1,0 +1,30 @@
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% articles.each_with_index do |a, i|%>
+      <li data-target="#carouselExampleCaptions" data-slide-to="<%= i %>"></li>
+    <% end %>
+  </ol>
+  <div class="carousel-inner" >
+
+    <% active = "active" %>
+    <% articles.each do |article| %>
+      <div class="carousel-item <%= active %> ">
+        <img src="<%= url_for(article.image) %>" class="d-block w-100" alt="img">
+        <div class="carousel-caption d-none d-md-block">
+          <h5><%= link_to article.title, article, class: 'links' %></h5>
+          <p><%= article.content[0,80] %></p>
+        </div>
+        <% active = "" %>
+      </div>
+    <% end %>
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
